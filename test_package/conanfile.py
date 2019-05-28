@@ -28,3 +28,4 @@ class TestpackageTestConan(ConanFile):
             os.chdir("bin")
             shutil.copy(os.path.join(self.source_folder, "test.ini"), os.path.curdir)
             self.run(".%sexample" % os.sep)
+            self.run(".%sexample_c" % os.sep)

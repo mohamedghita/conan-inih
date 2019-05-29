@@ -47,11 +47,17 @@ class PackageConan(ConanFile):
         "initial_alloc": 200
     }
 
-    def config_options(self):
-        if type(self.options.ini_max_line) is not int:
-            conans.errors.ConanException("Invalid value to option 'ini_max_line' value=%s. Valid values are integers only" % str(self.options.ini_max_line))
-        if type(self.options.initial_alloc) is not int:
-            conans.errors.ConanException("Invalid value to option 'initial_alloc' value=%s. Valid values are integers only" % str(self.options.initial_alloc))
+    def configure(self):
+        try:
+            int(self.options.ini_max_line)
+        except ValueError:
+            raise conans.errors.ConanException("Invalid value to option 'ini_max_line' value=%s. Valid values are integers only" %
+                                               str(self.options.ini_max_line))
+        try:
+            int(self.options.initial_alloc)
+        except ValueError:
+            raise conans.errors.ConanException("Invalid value to option 'initial_alloc' value=%s. Valid values are integers only" %
+                                               str(self.options.initial_alloc))
 
     def source(self):
         extension = ".zip" if tools.os_info.is_windows else ".tar.gz"

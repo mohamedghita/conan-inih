@@ -1,7 +1,7 @@
 from conans import ConanFile, tools, CMake
 import conans.errors
 import shutil
-
+import os.path
 
 class PackageConan(ConanFile):
     name = 'inih'
@@ -10,7 +10,6 @@ class PackageConan(ConanFile):
     author = "Mohamed G.A. Ghita (mohamed.ghita@radalytica.com)"
     description = 'inih library package for conan.io https://github.com/mohamedghita/inih'
     url = "https://github.com/mohamedghita/conan-inih"
-    exports_sources = "CMakeLists.txt"
     generators = "cmake"
     build_requires = "cmake_installer/[>=3.14.4]@conan/stable"
     settings = 'os', 'compiler', 'build_type', 'arch'
@@ -104,14 +103,14 @@ class PackageConan(ConanFile):
 
         # put definitions here so that they are re-used in cmake between
         # build() and package()
-        cmake.definitions["CONAN_C_FLAGS"] += ' ' + cFlags
+        cmake.definitions["CONAN_C_FLAGS"] += ' ' + cFlags + ' ' + '-fPIC'
         cmake.definitions["CONAN_CXX_FLAGS"] += ' ' + cxxFlags
         cmake.definitions["CONAN_SHARED_LINKER_FLAGS"] += ' ' + linkFlags
         cmake.definitions["CONAN_C_FLAGS"] += ' ' + self.__inih_definitions()  # inih options
 
         # choose targets to build via cmake variables
         cmakeDefs = {"SHARED_INIH": self.options.shared}
-        cmake.configure(defs=cmakeDefs)
+        cmake.configure(defs=cmakeDefs, source_folder=os.path.join(self.build_folder, "inih"))
         return cmake
 
     def build(self):

@@ -4,11 +4,11 @@ conan_basic_setup()
 
 
 # include directories
-set(include_directories "${CMAKE_CURRENT_SOURCE_DIR}/inih ${CMAKE_CURRENT_SOURCE_DIR}inih/cpp")
+set(include_directories "${CMAKE_CURRENT_SOURCE_DIR}/inih" "${CMAKE_CURRENT_SOURCE_DIR}/inih/cpp")
 include_directories(BEFORE ${include_directories})
 
 # inih library
-set(source_files "${CMAKE_CURRENT_SOURCE_DIR}/inih/ini.c" "${CMAKE_CURRENT_SOURCE_DIR}/inih/cpp/INIReader.cpp")
+file(GLOB source_files "${CMAKE_CURRENT_SOURCE_DIR}/inih/*.c" "${CMAKE_CURRENT_SOURCE_DIR}/inih/cpp/*.cpp")
 if(SHARED_INIH)
     add_library(inih SHARED ${source_files})
 else() 

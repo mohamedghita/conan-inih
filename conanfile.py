@@ -1,15 +1,14 @@
 from conans import ConanFile, tools, CMake
 import conans.errors
 import shutil
-import os.path
 
 
 class PackageConan(ConanFile):
     name = 'inih'
-    version = '44'
+    version = '44.1'
     license = 'BSD-3-Clause'
     author = "Mohamed G.A. Ghita (mohamed.ghita@radalytica.com)"
-    description = 'inih library package for conan.io https://github.com/benhoyt/inih'
+    description = 'inih library package for conan.io https://github.com/mohamedghita/inih'
     url = "https://github.com/mohamedghita/conan-inih"
     exports_sources = "CMakeLists.txt"
     generators = "cmake"
@@ -61,7 +60,7 @@ class PackageConan(ConanFile):
 
     def source(self):
         extension = ".zip" if tools.os_info.is_windows else ".tar.gz"
-        url = "https://github.com/benhoyt/inih/archive/r%s%s" % (self.version, extension)
+        url = "https://github.com/mohamedghita/inih/archive/r%s%s" % (self.version, extension)
         tools.get(url)
         shutil.move("inih-r%s" % self.version, "inih")
 

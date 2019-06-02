@@ -109,7 +109,7 @@ class PackageConan(ConanFile):
         cmake.definitions["CONAN_C_FLAGS"] += ' ' + self.__inih_definitions()  # inih options
 
         # choose targets to build via cmake variables
-        cmakeDefs = {"SHARED_INIH": self.options.shared}
+        cmakeDefs = {"BUILD_SHARED_LIBS": self.options.shared}
         cmake.configure(defs=cmakeDefs, source_folder=os.path.join(self.build_folder, "inih"))
         return cmake
 

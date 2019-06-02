@@ -10,6 +10,9 @@ target_link_libraries(example ${CONAN_LIBS})
 add_executable(example_c example_c.cpp)
 target_link_libraries(example_c ${CONAN_LIBS})
 
+add_executable(example_cpp_vector example_cpp_vector.cpp)
+target_link_libraries(example_cpp_vector ${CONAN_LIBS})
+
 
 # CTest is a testing tool that can be used to test your project.
 # enable_testing()

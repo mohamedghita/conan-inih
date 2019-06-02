@@ -29,3 +29,4 @@ class TestpackageTestConan(ConanFile):
             shutil.copy(os.path.join(self.source_folder, "test.ini"), os.path.curdir)
             self.run(".%sexample" % os.sep)
             self.run(".%sexample_c" % os.sep)
+            self.run(".%sexample_cpp_vector" % os.sep)

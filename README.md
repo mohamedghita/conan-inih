@@ -5,7 +5,7 @@ inih library package for conan.io https://github.com/benhoyt/inih
 Find conan package here: https://bintray.com/radalytica/conan-radalytica/inih:radalytica
 
 # release notes
-## 44 
+## v44 
 packages this release from @benhoyt https://github.com/benhoyt/inih/tree/r44
 ## v44.1
 packages this fork from @mohamedghita https://github.com/mohamedghita/inih/tree/r44.1. which supports vectors of string, integer, boolean, and real. The release extends the class INIReader by inih::extended::INIReaderVec.

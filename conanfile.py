@@ -103,13 +103,13 @@ class PackageConan(ConanFile):
 
         # put definitions here so that they are re-used in cmake between
         # build() and package()
-        cmake.definitions["CONAN_C_FLAGS"] += ' ' + cFlags + ' ' + '-fPIC'
-        cmake.definitions["CONAN_CXX_FLAGS"] += ' ' + cxxFlags
+        cmake.definitions["CONAN_C_FLAGS"] += ' ' + cFlags 
+        cmake.definitions["CONAN_CXX_FLAGS"] += ' ' + cxxFlags 
         cmake.definitions["CONAN_SHARED_LINKER_FLAGS"] += ' ' + linkFlags
         cmake.definitions["CONAN_C_FLAGS"] += ' ' + self.__inih_definitions()  # inih options
 
-        # cmakeDefs = {"BUILD_SHARED_LIBS": self.options.shared} connan add it by default
-        cmake.configure(defs={}, source_folder=os.path.join(self.build_folder, "inih"))
+        cmakeDefs = {"CMAKE_POSITION_INDEPENDENT_CODE": "ON"}
+        cmake.configure(defs=cmakeDefs, source_folder=os.path.join(self.build_folder, "inih"))
         return cmake
 
     def build(self):

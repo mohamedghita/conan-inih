@@ -2,7 +2,7 @@
 inih library package for conan.io https://github.com/benhoyt/inih
 
 # Bintray repository
-Find conan package here: https://bintray.com/radalytica/conan-radalytica/inih:radalytica
+Find conan package here: https://bintray.com/rd/conan-radalytica/inih:radalytica
 
 # Installation 
 1. [install conan.io](https://docs.conan.io/en/latest/installation.html) 
@@ -11,7 +11,7 @@ Find conan package here: https://bintray.com/radalytica/conan-radalytica/inih:ra
 * In a nuteshell, run these three commands:
 ```bash
 pip install conan
-conan remote add conan-radalytica https://api.bintray.com/conan/radalytica/conan-radalytica
+conan remote add conan-radalytica https://api.bintray.com/conan/rd/conan-radalytica
 conan install --reomte conan-radalytica inih/44.1@radalytica/stable
 ```
 
